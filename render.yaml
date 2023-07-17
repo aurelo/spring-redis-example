@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: spring-redis-example
+    runtime: docker
+    region: frankfurt
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: REDIS_HOST
+        fromService:
+          type: redis
+          name: redis-cache
+          property: host
+      - key: REDIS_PORT
+        fromService:
+          type: redis
+          name: redis-cache
+          property: port
+
+  # - type: web
+  #   name: spring-redis-example-image
+  #   runtime: image
+  #   image:
+  #     url: aurelo/spring-redis-example:latest
+  #   region: frankfurt
+  #   plan: free
+  #   healthCheckPath: /
+      # envVars:
+      # - key: REDIS_HOST
+      #   fromService:
+      #     type: redis
+      #     name: redis-cache
+      #     property: host
+      # - key: REDIS_PORT
+      #   fromService:
+      #     type: redis
+      #     name: redis-cache
+      #     property: port
+
+  # A Redis instance
+  - type: redis
+    name: redis-cache
+    region: frankfurt
+    ipAllowList: # required
+      - source: 0.0.0.0/0
+        description: everywhere
+    plan: free # optional (defaults to starter instance type)
