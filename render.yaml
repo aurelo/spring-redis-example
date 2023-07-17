@@ -16,8 +16,8 @@ services:
           type: redis
           name: redis-cache
           property: port
-
-   - type: web
+          
+  - type: web
      name: spring-redis-example-image
      runtime: image
      image:
