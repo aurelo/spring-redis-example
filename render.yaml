@@ -19,7 +19,7 @@ services:
 
   - type: web
     name: spring-redis-example-image
-    runtime: imaage
+    runtime: image
     image:
       url: ghcr.io/aurelo/spring-redis-example:latest
     region: frankfurt
