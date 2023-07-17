@@ -17,25 +17,25 @@ services:
           name: redis-cache
           property: port
 
-  # - type: web
-  #   name: spring-redis-example-image
-  #   runtime: image
-  #   image:
-  #     url: aurelo/spring-redis-example:latest
-  #   region: frankfurt
-  #   plan: free
-  #   healthCheckPath: /
-      # envVars:
-      # - key: REDIS_HOST
-      #   fromService:
-      #     type: redis
-      #     name: redis-cache
-      #     property: host
-      # - key: REDIS_PORT
-      #   fromService:
-      #     type: redis
-      #     name: redis-cache
-      #     property: port
+   - type: web
+     name: spring-redis-example-image
+     runtime: image
+     image:
+       url: ghcr.io/aurelo/spring-redis-example:latest
+     region: frankfurt
+     plan: free
+     healthCheckPath: /
+       envVars:
+       - key: REDIS_HOST
+         fromService:
+           type: redis
+           name: redis-cache
+           property: host
+       - key: REDIS_PORT
+         fromService:
+           type: redis
+           name: redis-cache
+           property: port
 
   # A Redis instance
   - type: redis
