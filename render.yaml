@@ -75,7 +75,7 @@ services:
 
 databases:
   - name: elephant
-    databaseName: spring-render-db
+    databaseName: pg
     region: frankfurt
     plan: free
 
