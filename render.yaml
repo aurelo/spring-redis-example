@@ -75,7 +75,6 @@ services:
 
 databases:
   - name: elephant
-    databaseName: pg_spring
     region: frankfurt
     plan: free
 
