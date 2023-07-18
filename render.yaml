@@ -36,6 +36,19 @@ services:
           type: redis
           name: redis-cache
           property: port
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: elephant
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: elephant
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: elephant
+          property: password
+
 
   # A Redis instance
   - type: redis
@@ -45,3 +58,12 @@ services:
       - source: 0.0.0.0/0
         description: everywhere
     plan: free # optional (defaults to starter instance type)
+
+
+
+databases:
+  - name: elephant
+    databaseName: postgres
+    region: frankfurt
+    plan: free
+
