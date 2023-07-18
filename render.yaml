@@ -16,6 +16,18 @@ services:
           type: redis
           name: redis-cache
           property: port
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: elephant
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: elephant
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: elephant
+          property: password
 
   - type: web
     name: spring-redis-example-image
